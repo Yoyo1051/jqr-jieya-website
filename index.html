@@ -182,10 +182,12 @@
     </div>
 
     <form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      class="contact-form"
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  action="/thank-you.html"
+  class="contact-form"
+>
     >
       <input type="hidden" name="form-name" value="contact" />
       <input type="hidden" name="bot-field" />
@@ -220,3 +222,50 @@
   </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>提交成功 | JieYa Studio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <div class="logo">JieYa Studio</div>
+      <nav class="nav">
+        <a href="index.html#services">商业服务</a>
+        <a href="index.html#jieya">姐丫 IP</a>
+        <a href="index.html#products">商品展示</a>
+        <a href="index.html#contact">联络我们</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="thank-you-box">
+        <p class="section-tag">Thank You</p>
+        <h1>提交成功</h1>
+        <p>
+          我们已经收到你的询问资料，会按业务类别尽快通过 WhatsApp 或 Email 回复你。
+        </p>
+
+        <div class="thank-you-actions">
+          <a href="index.html" class="btn primary">返回首页</a>
+          <a
+            href="https://wa.me/60127895055?text=你好，我刚刚提交了网站表单，想继续询问"
+            target="_blank"
+            class="btn secondary"
+          >
+            立即 WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+
+action="/thank-you.html"
