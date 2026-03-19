@@ -138,10 +138,24 @@
 
   <section id="contact" class="section contact-section">
   <div class="container contact-box">
-    <div>
+    <div class="contact-info">
       <p class="section-tag">Contact / Inquiry</p>
       <h2>询问报价 / 合作 / 产品</h2>
-      <p>填写下面资料，我们会通过 WhatsApp 或 Email 回复你。</p>
+      <p>请先选择询问类别，我们会按业务线回复你。</p>
+
+      <div class="contact-split">
+        <div class="contact-card">
+          <h3>Wangi Beauty / 姐丫 IP</h3>
+          <p>美容产品、礼盒、文创、姐丫 IP 相关咨询</p>
+          <p><strong>WhatsApp：</strong>012-789 5055</p>
+        </div>
+
+        <div class="contact-card">
+          <h3>Design / LED / 印刷</h3>
+          <p>设计、LED 广告、招牌、印刷与商业合作</p>
+          <p><strong>WhatsApp：</strong>012-778 1051 / 010-821 1051</p>
+        </div>
+      </div>
     </div>
 
     <form
@@ -152,12 +166,19 @@
     >
       <input type="hidden" name="form-name" value="contact" />
 
+      <select name="inquiry_type" required>
+        <option value="">请选择询问类别</option>
+        <option value="beauty-ip">Wangi Beauty / 姐丫 IP</option>
+        <option value="design-led-print">Design / LED / 印刷</option>
+      </select>
+
       <input type="text" name="name" placeholder="你的名字" required />
       <input type="email" name="email" placeholder="你的 Email" required />
       <input type="text" name="phone" placeholder="WhatsApp 电话" />
+
       <textarea
         name="message"
-        placeholder="你想询问什么？（设计 / LED / 印刷 / 产品）"
+        placeholder="你想询问什么？"
         required
         rows="5"
       ></textarea>
