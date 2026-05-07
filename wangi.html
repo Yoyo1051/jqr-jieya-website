@@ -1,15 +1,14 @@
-<!DOCTYPE html>
+from pathlib import Path
+import zipfile
+
+html = r'''<!DOCTYPE html>
 <html lang="zh-Hans">
-
 <head>
-
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 <title>Wangi Beauty 产品页面｜Jieya Space</title>
 
 <style>
-
 :root{
   --green:#2f9b57;
   --cream:#fbf8ef;
@@ -18,9 +17,9 @@
   --line:#e8e0d2;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
@@ -30,11 +29,7 @@ body{
   line-height:1.65;
 }
 
-a{
-  text-decoration:none;
-}
-
-/* BACK */
+a{text-decoration:none}
 
 .back-home{
   padding:16px 22px;
@@ -47,37 +42,20 @@ a{
   color:var(--green);
 }
 
-/* HERO */
-
 .hero{
   min-height:72vh;
   padding:72px 20px 44px;
   background:
-    linear-gradient(
-      120deg,
-      rgba(255,255,255,.92),
-      rgba(250,246,232,.78)
-    ),
-    radial-gradient(
-      circle at top left,
-      #dcebd6,
-      transparent 38%
-    ),
-    radial-gradient(
-      circle at bottom right,
-      #f1d9c8,
-      transparent 32%
-    );
-
+    linear-gradient(120deg,rgba(255,255,255,.92),rgba(250,246,232,.78)),
+    radial-gradient(circle at top left,#dcebd6,transparent 38%),
+    radial-gradient(circle at bottom right,#f1d9c8,transparent 32%);
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
 }
 
-.hero-inner{
-  max-width:900px;
-}
+.hero-inner{max-width:900px}
 
 .logo{
   font-size:20px;
@@ -117,25 +95,14 @@ a{
   border:1px solid var(--green);
 }
 
-.btn.primary{
-  background:var(--green);
-  color:white;
-}
-
-.btn.secondary{
-  background:white;
-  color:var(--green);
-}
-
-/* CONTAINER */
+.btn.primary{background:var(--green);color:white}
+.btn.secondary{background:white;color:var(--green)}
 
 .container{
   max-width:1180px;
   margin:auto;
   padding:42px 18px;
 }
-
-/* NOTICE */
 
 .notice{
   background:white;
@@ -147,17 +114,8 @@ a{
   position:relative;
 }
 
-.notice h2{
-  margin:0 0 10px;
-  font-size:26px;
-}
-
-.notice p{
-  margin:0;
-  color:var(--muted);
-}
-
-/* NAV */
+.notice h2{margin:0 0 10px;font-size:26px}
+.notice p{margin:0;color:var(--muted)}
 
 .nav{
   display:flex;
@@ -181,11 +139,7 @@ a{
   font-size:14px;
 }
 
-/* CATEGORY */
-
-.category{
-  padding:32px 0;
-}
+.category{padding:32px 0}
 
 .cat-title{
   display:flex;
@@ -194,9 +148,7 @@ a{
   margin-bottom:16px;
 }
 
-.cat-title span{
-  font-size:30px;
-}
+.cat-title span{font-size:30px}
 
 .cat-title h2{
   margin:0;
@@ -204,15 +156,11 @@ a{
   line-height:1.2;
 }
 
-/* GRID */
-
 .grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:18px;
 }
-
-/* CARD */
 
 .card{
   background:white;
@@ -224,16 +172,9 @@ a{
 
 .photo-slot{
   height:190px;
-
+  overflow:hidden;
   background:
-  repeating-linear-gradient(
-    135deg,
-    #fbfaf5,
-    #fbfaf5 14px,
-    #f1eadc 14px,
-    #f1eadc 28px
-  );
-
+    repeating-linear-gradient(135deg,#fbfaf5,#fbfaf5 14px,#f1eadc 14px,#f1eadc 28px);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -243,13 +184,14 @@ a{
   border-bottom:1px solid var(--line);
 }
 
-.photo-slot small{
-  font-weight:500;
+.photo-slot img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 
-.card-body{
-  padding:18px;
-}
+.card-body{padding:18px}
 
 .code{
   color:var(--green);
@@ -283,8 +225,6 @@ a{
   color:#1f2e25;
 }
 
-/* CTA */
-
 .cta{
   background:#1f3b2b;
   color:white;
@@ -294,10 +234,7 @@ a{
   margin:26px 0 10px;
 }
 
-.cta h2{
-  font-size:32px;
-  margin:0 0 10px;
-}
+.cta h2{font-size:32px;margin:0 0 10px}
 
 .cta p{
   margin:0 auto 22px;
@@ -311,8 +248,6 @@ a{
   border-color:white;
 }
 
-/* FOOTER */
-
 .footer{
   text-align:center;
   color:#7a817b;
@@ -320,269 +255,397 @@ a{
   padding:28px;
 }
 
-/* MOBILE */
-
 @media (max-width:900px){
-
-.grid{
-  grid-template-columns:repeat(2,minmax(0,1fr));
-}
-
-.notice{
-  margin-top:-50px;
-}
-
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .notice{margin-top:-50px}
 }
 
 @media (max-width:600px){
-
-.hero{
-  min-height:62vh;
-  padding-top:54px;
+  .hero{min-height:62vh;padding-top:54px}
+  .grid{grid-template-columns:1fr}
+  .photo-slot{height:170px}
+  .cat-title h2{font-size:24px}
+  .nav{position:relative}
 }
-
-.grid{
-  grid-template-columns:1fr;
-}
-
-.photo-slot{
-  height:170px;
-}
-
-.cat-title h2{
-  font-size:24px;
-}
-
-.nav{
-  position:relative;
-}
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-<!-- BACK HOME -->
-
 <div class="back-home">
-
-  <a href="index.html">
-    ← 回到 Jieya Space 首页
-  </a>
-
+  <a href="index.html">← 回到 Jieya Space 首页</a>
 </div>
 
-<!-- HERO -->
-
 <header class="hero">
-
   <div class="hero-inner">
+    <div class="logo">Wangi Beauty · Since 1973</div>
 
-    <div class="logo">
-      Wangi Beauty · Since 1973
-    </div>
-
-    <h1>
-      自然草本护肤，<br>
-      从把脸洗干净开始。
-    </h1>
+    <h1>自然草本护肤，<br>从把脸洗干净开始。</h1>
 
     <p>
-      简单、经济、效果佳。
-      这里整理了 Wangi Beauty 产品分类与价格，
-      产品照片位置已预留，
-      之后可以慢慢补上。
+      简单、经济、效果佳。这里整理了 Wangi Beauty 产品分类与价格，
+      产品照片已经连接到 images 文件夹。
     </p>
 
     <div class="btns">
-
-      <a class="btn primary" href="#products">
-        浏览产品
-      </a>
-
-      <a class="btn secondary" href="#help">
-        不知道怎么选？
-      </a>
-
+      <a class="btn primary" href="#products">浏览产品</a>
+      <a class="btn secondary" href="#help">不知道怎么选？</a>
     </div>
-
   </div>
-
 </header>
-
-<!-- MAIN -->
 
 <main class="container" id="products">
 
 <section class="notice">
-
-<h2>
-🌿 产品页面说明
-</h2>
-
-<p>
-价格以 Online Price List 为基础。
-若不确定适合哪一款，
-可以先从肤质、痘痘、保湿、
-防晒或面膜需求开始选择。
-</p>
-
+  <h2>🌿 产品页面说明</h2>
+  <p>
+    若不确定适合哪一款，可以先从肤质、痘痘、保湿、防晒或面膜需求开始选择。
+    照片文件请放在 GitHub 的 images 文件夹，文件名保持小写，例如 images/hc.jpg。
+  </p>
 </section>
 
-<nav class="nav">
-
-<a href="#cat0">🧼 Cleansing</a>
-<a href="#cat1">🌱 Skincare</a>
-<a href="#cat2">💧 Moisturising</a>
-<a href="#cat3">✨ Cell+</a>
-<a href="#cat4">🌿 Herbal</a>
-<a href="#cat5">💄 Makeup</a>
-
+<nav class="nav" aria-label="Product categories">
+  <a href="#cat0">🧼 Cleansing</a>
+  <a href="#cat1">🌱 Skincare</a>
+  <a href="#cat2">💧 Moisturising</a>
+  <a href="#cat3">✨ Cell+</a>
+  <a href="#cat4">🌿 Herbal Mask</a>
+  <a href="#cat5">💄 Makeup</a>
 </nav>
 
-<!-- CATEGORY -->
-
 <section class="category" id="cat0">
+  <div class="cat-title">
+    <span>🧼</span>
+    <h2 style="color:#2f9b57">Cleansing Series 洗脸系列</h2>
+  </div>
 
-<div class="cat-title">
+  <div class="grid">
 
-<span>🧼</span>
+    <article class="card">
+      <div class="photo-slot"><img src="images/hc.jpg" alt="HC Herbal Cleansing Gel"></div>
+      <div class="card-body">
+        <div class="code">(HC)</div>
+        <h3>Herbal Cleansing Gel</h3>
+        <p class="zh">芦荟洁颜蜜</p>
+        <p class="desc">适合日常清洁，清爽不厚重。</p>
+        <div class="price">RM 43</div>
+      </div>
+    </article>
 
-<h2 style="color:#2f9b57">
-Cleansing Series 洗脸系列
-</h2>
+    <article class="card">
+      <div class="photo-slot"><img src="images/cc.jpg" alt="CC Herbal Cleansing Cream"></div>
+      <div class="card-body">
+        <div class="code">(CC)</div>
+        <h3>Herbal Cleansing Cream</h3>
+        <p class="zh">茶树护理洁面乳</p>
+        <p class="desc">温和洁面，适合想要简单保养的人。</p>
+        <div class="price">RM 39</div>
+      </div>
+    </article>
 
-</div>
+    <article class="card">
+      <div class="photo-slot"><img src="images/cm.jpg" alt="CM Herbal Cleansing Milk"></div>
+      <div class="card-body">
+        <div class="code">(CM)</div>
+        <h3>Herbal Cleansing Milk</h3>
+        <p class="zh">草本滋养洁面乳</p>
+        <p class="desc">洗后柔软，适合偏干或想要温和清洁的肌肤。</p>
+        <div class="price">RM 39</div>
+      </div>
+    </article>
 
-<div class="grid">
+    <article class="card">
+      <div class="photo-slot"><img src="images/sc.jpg" alt="SC Herbal Cleansing Scrub"></div>
+      <div class="card-body">
+        <div class="code">(SC)</div>
+        <h3>Herbal Cleansing Scrub</h3>
+        <p class="zh">微粒磨砂膏</p>
+        <p class="desc">一周 1–2 次，帮助角质代谢。</p>
+        <div class="price">RM 65</div>
+      </div>
+    </article>
 
-<div class="card">
-
-<div class="photo-slot">
-产品照片
-</div>
-
-<div class="card-body">
-
-<div class="code">(HC)</div>
-
-<h3>
-Herbal Cleansing Gel
-</h3>
-
-<p class="zh">
-芦荟洁颜蜜
-</p>
-
-<p class="desc">
-适合日常清洁，清爽不厚重。
-</p>
-
-<div class="price">
-RM 43
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="photo-slot">
-产品照片
-</div>
-
-<div class="card-body">
-
-<div class="code">(SC)</div>
-
-<h3>
-Herbal Cleansing Scrub
-</h3>
-
-<p class="zh">
-微粒磨砂膏
-</p>
-
-<p class="desc">
-帮助角质代谢与清洁。
-</p>
-
-<div class="price">
-RM 65
-</div>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<div class="photo-slot">
-产品照片
-</div>
-
-<div class="card-body">
-
-<div class="code">(SS)</div>
-
-<h3>
-Beauty Soap
-</h3>
-
-<p class="zh">
-海藻洁肤皂
-</p>
-
-<p class="desc">
-适合日常与旅行使用。
-</p>
-
-<div class="price">
-RM 40
-</div>
-
-</div>
-
-</div>
-
-</div>
-
+  </div>
 </section>
 
-<!-- CTA -->
+<section class="category" id="cat1">
+  <div class="cat-title">
+    <span>🌱</span>
+    <h2 style="color:#e85b30">Skincare Series 护肤系列</h2>
+  </div>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/ag.jpg" alt="AG Acne-Prone Skin Cleaner Gel"></div>
+      <div class="card-body">
+        <div class="code">(AG)</div>
+        <h3>Acne-Prone Skin Cleaner Gel</h3>
+        <p class="zh">暗疮精华液</p>
+        <p class="desc">适合痘痘肌、油脂较旺盛的肌肤。</p>
+        <div class="price">RM 39</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/sp.jpg" alt="SP Beauty Cream"></div>
+      <div class="card-body">
+        <div class="code">(SP)</div>
+        <h3>SP Beauty Cream</h3>
+        <p class="zh">抗痘粉刺驻颜霜</p>
+        <p class="desc">痘痘、粉刺护理常用款。</p>
+        <div class="price">RM 88</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/sf.jpg" alt="SF Beauty Cream"></div>
+      <div class="card-body">
+        <div class="code">(SF)</div>
+        <h3>SF Beauty Cream</h3>
+        <p class="zh">美白抗斑驻颜霜</p>
+        <p class="desc">适合肤色不均、想提亮的人。</p>
+        <div class="price">RM 88</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/rl.jpg" alt="RL Rejuvenating Lotion"></div>
+      <div class="card-body">
+        <div class="code">(RL)</div>
+        <h3>Rejuvenating Lotion</h3>
+        <p class="zh">活细胞精华液</p>
+        <p class="desc">修护型护理，适合皮肤状态不稳定时。</p>
+        <div class="price">RM 98</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/uv-d.jpg" alt="UV Day Cream"></div>
+      <div class="card-body">
+        <div class="code">(UV-D)</div>
+        <h3>UV Day Cream SPF25++</h3>
+        <p class="zh">防晒粉底霜</p>
+        <p class="desc">日常防晒与基础防护。</p>
+        <div class="price">RM 88</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/uv-l.jpg" alt="UV Light Day Cream"></div>
+      <div class="card-body">
+        <div class="code">(UV-L)</div>
+        <h3>UV Day Cream Light</h3>
+        <p class="zh">防晒粉底霜浅色款</p>
+        <p class="desc">适合日常基础防护与提气色。</p>
+        <div class="price">RM 88</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="category" id="cat2">
+  <div class="cat-title">
+    <span>💧</span>
+    <h2 style="color:#233d91">Moisturising Series 保湿系列</h2>
+  </div>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/ml.jpg" alt="ML Moisturising Lotion"></div>
+      <div class="card-body">
+        <div class="code">(ML)</div>
+        <h3>Moisturising Lotion</h3>
+        <p class="zh">芦荟爽肤露</p>
+        <p class="desc">基础补水，适合日常保湿。</p>
+        <div class="price">RM 55</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/av.jpg" alt="AV Aloe Vera Soothing Gel"></div>
+      <div class="card-body">
+        <div class="code">(AV)</div>
+        <h3>Aloe Vera Soothing Gel</h3>
+        <p class="zh">芦荟精华素</p>
+        <p class="desc">舒缓保湿，适合晒后或干燥时使用。</p>
+        <div class="price">RM 88</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/av1.jpg" alt="AV1 Aloe Vera Soothing Gel"></div>
+      <div class="card-body">
+        <div class="code">(AV1)</div>
+        <h3>Aloe Vera Soothing Gel</h3>
+        <p class="zh">芦荟精华素</p>
+        <p class="desc">补充照片款，可用于同系列不同规格展示。</p>
+        <div class="price">RM 88</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/bc.jpg" alt="BC Moisture-Balanced Beauty Cream"></div>
+      <div class="card-body">
+        <div class="code">(BC)</div>
+        <h3>Moisture-Balanced Beauty Cream</h3>
+        <p class="zh">保湿滋润霜</p>
+        <p class="desc">帮助维持水油平衡。</p>
+        <div class="price">RM 60</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/nc.jpg" alt="NC Night Cream"></div>
+      <div class="card-body">
+        <div class="code">(NC)</div>
+        <h3>Night Cream</h3>
+        <p class="zh">强效晚霜</p>
+        <p class="desc">晚间滋润护理。</p>
+        <div class="price">RM 50</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/vc.jpg" alt="VC Vit C Active Cream"></div>
+      <div class="card-body">
+        <div class="code">(VC)</div>
+        <h3>Vit. C Active Cream</h3>
+        <p class="zh">Vit.C 生化调理霜</p>
+        <p class="desc">维 C 护理，适合想提亮的人。</p>
+        <div class="price">RM 63</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="category" id="cat3">
+  <div class="cat-title">
+    <span>✨</span>
+    <h2 style="color:#d72c2c">Cell+ Stem Cells Series 植物干细胞系列</h2>
+  </div>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/stc.jpg" alt="STC Stem Cell Cream"></div>
+      <div class="card-body">
+        <div class="code">(STC)</div>
+        <h3>Stem Cell Cream 35ml</h3>
+        <p class="zh">植物干细胞精华面霜</p>
+        <p class="desc">高端修护护理，适合认真改善肤况的人。</p>
+        <div class="price">RM 430</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/stc-travel.jpg" alt="STC Travel Pack"></div>
+      <div class="card-body">
+        <div class="code">(STC Travel)</div>
+        <h3>Cream Travel Pack 10ml</h3>
+        <p class="zh">旅行试用装</p>
+        <p class="desc">先体验小容量，再决定是否入手正装。</p>
+        <div class="price">RM 139</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/st.jpg" alt="ST Stem Cell Essence"></div>
+      <div class="card-body">
+        <div class="code">(ST)</div>
+        <h3>Stem Cell Essence 35ml</h3>
+        <p class="zh">植物干细胞精华液</p>
+        <p class="desc">精华型修护护理。</p>
+        <div class="price">RM 318</div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/st-travel.jpg" alt="ST Travel Pack"></div>
+      <div class="card-body">
+        <div class="code">(ST Travel)</div>
+        <h3>Essence Travel Pack 10ml</h3>
+        <p class="zh">旅行试用装</p>
+        <p class="desc">适合旅行或体验使用。</p>
+        <div class="price">RM 108</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="category" id="cat4">
+  <div class="cat-title">
+    <span>🌿</span>
+    <h2 style="color:#7a5137">Herbal Mask Series 草本面膜系列</h2>
+  </div>
+
+  <div class="grid">
+
+    <article class="card">
+      <div class="photo-slot"><img src="images/mask.jpg" alt="Traditional Herbal Mask"></div>
+      <div class="card-body">
+        <div class="code">(TF/TM/TP)</div>
+        <h3>Traditional Mask Set</h3>
+        <p class="zh">经典草本面膜</p>
+        <p class="desc">Wangi 核心护理，适合搭配洗脸护理。</p>
+        <div class="price">RM 155</div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="category" id="cat5">
+  <div class="cat-title">
+    <span>💄</span>
+    <h2 style="color:#333333">Makeup Products 彩妆产品</h2>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <div class="photo-slot">
+        <span>之后可放蜜粉 / 彩妆产品照片</span>
+      </div>
+      <div class="card-body">
+        <div class="code">(LP)</div>
+        <h3>Loose Powder</h3>
+        <p class="zh">蜜粉</p>
+        <p class="desc">轻薄定妆，适合日常使用。</p>
+        <div class="price">RM 43</div>
+      </div>
+    </article>
+  </div>
+</section>
 
 <section class="cta" id="help">
-
-<h2>
-不知道怎么选？我帮你搭配。
-</h2>
-
-<p>
-你不需要一次买很多。
-先告诉我你的肤质、
-目前皮肤问题、预算和使用习惯，
-我会帮你从基础护理开始搭配。
-</p>
-
-<a class="btn" href="https://wa.me/" target="_blank">
-
-WhatsApp 询问
-
-</a>
-
+  <h2>不知道怎么选？我帮你搭配。</h2>
+  <p>
+    你不需要一次买很多。先告诉我你的肤质、目前皮肤问题、预算和使用习惯，
+    我会帮你从基础清洁、保湿、面膜或修护开始配。
+  </p>
+  <a class="btn" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp 询问</a>
 </section>
 
 </main>
 
 <footer class="footer">
-
-Jieya Space × Wangi Beauty Product Page
-
+  Jieya Space × Wangi Beauty Product Page · 产品照片来自 images 文件夹
 </footer>
 
 </body>
 </html>
+'''
+
+out = Path("/mnt/data/wangi.html")
+out.write_text(html, encoding="utf-8")
+
+zip_path = Path("/mnt/data/wangi_updated.zip")
+with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
+    z.write(out, "wangi.html")
+
+print("Created:", out)
+print("Created:", zip_path)
