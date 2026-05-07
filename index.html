@@ -1,285 +1,480 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Sparkles, PenLine, Leaf, Monitor, ShoppingBag, BookOpen, MessageCircle } from "lucide-react";
+* {
+  box-sizing: border-box;
+}
 
-export default function JieyaHomepage() {
-  return (
-    <div className="min-h-screen bg-[#F8F3EC] text-[#3E3028]">
-      {/* Navigation */}
-      <header className="sticky top-0 z-50 border-b border-[#E6D8C8] bg-[#F8F3EC]/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#3E3028] text-sm font-semibold text-white">
-              JY
-            </div>
-            <div>
-              <p className="text-sm font-semibold tracking-wide">JieYa Creative</p>
-              <p className="text-xs text-[#7A6658]">姐丫创意</p>
-            </div>
-          </div>
+html {
+  scroll-behavior: smooth;
+}
 
-          <nav className="hidden gap-6 text-sm text-[#6E5A4C] md:flex">
-            <a href="#home" className="hover:text-[#3E3028]">Home 首页</a>
-            <a href="#services" className="hover:text-[#3E3028]">Business 商业服务</a>
-            <a href="#jieya" className="hover:text-[#3E3028]">JieYa IP 姐丫IP</a>
-            <a href="#journal" className="hover:text-[#3E3028]">Journal 日志</a>
-            <a href="#contact" className="hover:text-[#3E3028]">Contact 联系</a>
-          </nav>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #222;
+  background: #f5f5f5;
+  line-height: 1.7;
+}
 
-          <Button className="rounded-full bg-[#3E3028] px-5 text-white hover:bg-[#5B4638]">
-            Request Quote
-          </Button>
-        </div>
-      </header>
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-      {/* Hero */}
-      <section id="home" className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-        <div>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#E2D1BE] bg-white/60 px-4 py-2 text-sm text-[#7A6658]">
-            <Sparkles className="h-4 w-4" />
-            Bilingual Creative Agency · 双语创意机构
-          </div>
+.container {
+  width: 90%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
 
-          <h1 className="max-w-3xl text-5xl font-semibold leading-tight tracking-tight md:text-7xl">
-            JieYa Creative
-            <span className="block text-[#9B7258]">姐丫创意</span>
-          </h1>
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e5e5e5;
+}
 
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#6E5A4C]">
-            Where professional B2B services meet gentle lifestyle branding.
-            From LED display solutions to beauty products, journals and creative merchandise — we create with purpose.
-          </p>
+.nav-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  gap: 20px;
+}
 
-          <p className="mt-4 max-w-2xl text-lg leading-8 text-[#6E5A4C]">
-            专业商业服务与温柔生活品牌的交汇。从 LED 显示、设计服务，到美妆产品、手帐与创意周边，我们用心创造。
-          </p>
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+}
 
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Button className="rounded-full bg-[#3E3028] px-7 py-6 text-white hover:bg-[#5B4638]">
-              Explore Business Services
-            </Button>
-            <Button variant="outline" className="rounded-full border-[#C8B39F] bg-transparent px-7 py-6 text-[#3E3028] hover:bg-white">
-              Enter JieYa IP
-            </Button>
-          </div>
-        </div>
+.nav {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
 
-        <div className="relative">
-          <div className="rounded-[2rem] border border-[#E2D1BE] bg-white/70 p-5 shadow-sm">
-            <div className="aspect-[4/5] rounded-[1.5rem] bg-gradient-to-br from-[#F1DED1] via-[#F8F3EC] to-[#DDD2C4] p-8">
-              <div className="flex h-full flex-col justify-between rounded-[1.2rem] border border-white/60 bg-white/45 p-6">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.25em] text-[#9B7258]">JieYa Space</p>
-                  <h2 className="mt-4 text-4xl font-semibold leading-tight">
-                    在这里，
-                    <br />你不用随时很厉害。
-                  </h2>
-                </div>
-                <div className="space-y-3 text-sm text-[#6E5A4C]">
-                  <p>beauty · journal · self growth</p>
-                  <p>simple · stable · meaningful</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+.nav a {
+  font-size: 14px;
+  color: #555;
+}
 
-      {/* Two Main Directions */}
-      <section id="services" className="mx-auto max-w-7xl px-6 py-12">
-        <div className="mb-10 text-center">
-          <p className="text-sm uppercase tracking-[0.25em] text-[#9B7258]">Two Systems</p>
-          <h2 className="mt-3 text-4xl font-semibold">一边创造收入，一边累积品牌资产</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-[#6E5A4C]">
-            JQR / business services 是现实收入系统；JieYa IP 是长期生活品牌资产。
-          </p>
-        </div>
+.nav a:hover {
+  color: #111;
+}
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <Card className="rounded-[2rem] border-[#E2D1BE] bg-white/75 shadow-sm">
-            <CardContent className="p-8">
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#3E3028] text-white">
-                <Monitor className="h-7 w-7" />
-              </div>
-              <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#9B7258]">B2B</p>
-              <h3 className="mt-3 text-3xl font-semibold">Business Services 商业服务</h3>
-              <p className="mt-4 leading-7 text-[#6E5A4C]">
-                Professional design, LED display solutions, LED advertising, printing and event support for corporate clients, events and roadshows.
-              </p>
-              <ul className="mt-6 space-y-3 text-[#5B4638]">
-                <li>→ Design 设计服务</li>
-                <li>→ LED Buying / Rental / Advertising</li>
-                <li>→ Printing 印刷服务</li>
-                <li>→ Event / Roadshow Support</li>
-              </ul>
-              <Button className="mt-8 rounded-full bg-[#3E3028] px-6 text-white hover:bg-[#5B4638]">
-                Get a Quote 询价
-              </Button>
-            </CardContent>
-          </Card>
+.hero {
+  background: #fff;
+  padding: 90px 0 70px;
+  border-bottom: 1px solid #e5e5e5;
+}
 
-          <Card id="jieya" className="rounded-[2rem] border-[#E2D1BE] bg-[#FFF8F2] shadow-sm">
-            <CardContent className="p-8">
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#CFAF9A] text-white">
-                <Leaf className="h-7 w-7" />
-              </div>
-              <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#9B7258]">Lifestyle IP</p>
-              <h3 className="mt-3 text-3xl font-semibold">JieYa IP 姐丫品牌</h3>
-              <p className="mt-4 leading-7 text-[#6E5A4C]">
-                A gentle lifestyle brand featuring beauty products, skincare journey, journaling practice, creative merchandise, cards, stickers and seasonal collections.
-              </p>
-              <ul className="mt-6 space-y-3 text-[#5B4638]">
-                <li>→ Beauty Products 美妆产品</li>
-                <li>→ Gentle Daily Index Tabs 分页贴</li>
-                <li>→ The Practice 觉察练习</li>
-                <li>→ Journal 日志内容</li>
-              </ul>
-              <Button variant="outline" className="mt-8 rounded-full border-[#C8B39F] bg-transparent px-6 text-[#3E3028] hover:bg-white">
-                Order / Inquiry 订购咨询
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 36px;
+  align-items: center;
+}
 
-      {/* JieYa Journey Cards */}
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="mb-10">
-          <p className="text-sm uppercase tracking-[0.25em] text-[#9B7258]">JieYa Space</p>
-          <h2 className="mt-3 text-4xl font-semibold">让用户留下来的三个入口</h2>
-        </div>
+.eyebrow {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
 
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            {
-              icon: <Leaf className="h-6 w-6" />,
-              title: "Skincare Journey",
-              zh: "护肤成长旅程",
-              text: "Record your skin condition, maintenance day, herbal mask routine and slow visible changes.",
-            },
-            {
-              icon: <PenLine className="h-6 w-6" />,
-              title: "Gentle Daily Index Tabs",
-              zh: "慢慢变好 · 分页贴",
-              text: "Functional and aesthetic tabs for journaling, emotional tracking, skincare notes and daily reset.",
-            },
-            {
-              icon: <BookOpen className="h-6 w-6" />,
-              title: "The Practice",
-              zh: "每日觉察练习",
-              text: "A simple reflection system using Quote, Practice, For Me, For You and For Us.",
-            },
-          ].map((item) => (
-            <Card key={item.title} className="rounded-[2rem] border-[#E2D1BE] bg-white/70 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-              <CardContent className="p-7">
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F1DED1] text-[#7A4F3C]">
-                  {item.icon}
-                </div>
-                <h3 className="text-2xl font-semibold">{item.title}</h3>
-                <p className="mt-1 text-[#9B7258]">{item.zh}</p>
-                <p className="mt-4 leading-7 text-[#6E5A4C]">{item.text}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
+.hero h1 {
+  font-size: 60px;
+  line-height: 1.1;
+  margin: 0 0 18px;
+}
 
-      {/* Journal */}
-      <section id="journal" className="bg-[#EFE3D6] px-6 py-16">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
-            <div>
-              <p className="text-sm uppercase tracking-[0.25em] text-[#9B7258]">Latest Journal</p>
-              <h2 className="mt-3 text-4xl font-semibold">让 Google 和用户都慢慢认识你</h2>
-            </div>
-            <Button variant="outline" className="w-fit rounded-full border-[#C8B39F] bg-transparent px-6 text-[#3E3028] hover:bg-white">
-              View All Posts
-            </Button>
-          </div>
+.hero-desc {
+  font-size: 20px;
+  max-width: 760px;
+  color: #444;
+}
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              "修复不是软弱，是我开始照顾自己",
-              "为什么护肤是一段长期陪伴？",
-              "Maintenance Day 01：慢慢整理我的生活",
-            ].map((title, index) => (
-              <article key={title} className="rounded-[2rem] border border-[#DECBB8] bg-white/65 p-6">
-                <div className="mb-5 h-40 rounded-[1.5rem] bg-[#F8F3EC]" />
-                <p className="text-sm text-[#9B7258]">Journal 0{index + 1}</p>
-                <h3 className="mt-3 text-2xl font-semibold leading-tight">{title}</h3>
-                <p className="mt-4 text-sm leading-7 text-[#6E5A4C]">
-                  A gentle note about beauty, awareness and rebuilding life slowly.
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+.hero-buttons {
+  margin-top: 28px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
-      {/* CTA */}
-      <section id="contact" className="mx-auto max-w-5xl px-6 py-20 text-center">
-        <div className="rounded-[2.5rem] border border-[#E2D1BE] bg-white/75 p-10 shadow-sm">
-          <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-[#3E3028] text-white">
-            <MessageCircle className="h-7 w-7" />
-          </div>
-          <h2 className="text-4xl font-semibold">Ready to create together?</h2>
-          <p className="mx-auto mt-4 max-w-2xl leading-7 text-[#6E5A4C]">
-            Whether you need business design services, LED solutions, beauty products or JieYa creative merchandise, you can start with a simple inquiry.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button className="rounded-full bg-[#3E3028] px-7 py-6 text-white hover:bg-[#5B4638]">
-              Contact Us 联系我们
-            </Button>
-            <Button variant="outline" className="rounded-full border-[#C8B39F] bg-transparent px-7 py-6 text-[#3E3028] hover:bg-white">
-              View Portfolio
-            </Button>
-          </div>
-        </div>
-      </section>
+.btn {
+  display: inline-block;
+  padding: 13px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
 
-      {/* Footer */}
-      <footer className="border-t border-[#E6D8C8] px-6 py-10">
-        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-4">
-          <div>
-            <p className="text-xl font-semibold">JieYa Creative</p>
-            <p className="mt-2 text-sm text-[#7A6658]">姐丫创意</p>
-            <p className="mt-4 text-sm leading-6 text-[#6E5A4C]">
-              Bridging B2B services and gentle lifestyle creativity.
-            </p>
-          </div>
-          <div>
-            <p className="font-semibold">Business Services</p>
-            <ul className="mt-4 space-y-2 text-sm text-[#6E5A4C]">
-              <li>Design</li>
-              <li>LED Solutions</li>
-              <li>Printing</li>
-              <li>Request Quote</li>
-            </ul>
-          </div>
-          <div>
-            <p className="font-semibold">JieYa IP</p>
-            <ul className="mt-4 space-y-2 text-sm text-[#6E5A4C]">
-              <li>Beauty Products</li>
-              <li>Merchandise</li>
-              <li>Journal</li>
-              <li>Order / Inquiry</li>
-            </ul>
-          </div>
-          <div>
-            <p className="font-semibold">Connect</p>
-            <ul className="mt-4 space-y-2 text-sm text-[#6E5A4C]">
-              <li>Facebook</li>
-              <li>Instagram</li>
-              <li>YouTube</li>
-              <li>WhatsApp</li>
-            </ul>
-          </div>
-        </div>
-        <p className="mx-auto mt-10 max-w-7xl text-sm text-[#7A6658]">
-          © 2026 JieYa Creative 姐丫创意. All rights reserved.
-        </p>
-      </footer>
-    </div>
-  );
+.btn.primary {
+  background: #1f1f1f;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  opacity: 0.9;
+}
+
+.btn.secondary {
+  background: #fff;
+  color: #222;
+  border: 1px solid #d0d0d0;
+}
+
+.btn.secondary:hover {
+  background: #f8f8f8;
+}
+
+.hero-card {
+  display: grid;
+  gap: 18px;
+}
+
+.mini-card {
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.mini-label,
+.section-tag {
+  font-size: 13px;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.section.alt {
+  background: #fff;
+}
+
+.section-head {
+  margin-bottom: 30px;
+}
+
+.section-head h2 {
+  font-size: 38px;
+  margin: 0 0 10px;
+}
+
+.section-head p {
+  margin: 0;
+  color: #555;
+}
+
+.grid {
+  display: grid;
+  gap: 22px;
+}
+
+.grid.three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid.four {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.card,
+.product-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  border: 1px solid #ececec;
+}
+
+.card h3,
+.product-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 28px;
+}
+
+.product-image {
+  height: 150px;
+  border-radius: 16px;
+  background: #efefef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+.contact-section {
+  padding-top: 20px;
+}
+
+.contact-box {
+  background: #1f1f1f;
+  color: #fff;
+  border-radius: 28px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  align-items: center;
+}
+
+.contact-box h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 36px;
+}
+
+.contact-box p {
+  color: #ddd;
+  margin: 0;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.contact-box .btn.secondary {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.footer {
+  background: #fff;
+  border-top: 1px solid #e5e5e5;
+  padding: 24px 0;
+}
+
+.footer-wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  color: #666;
+  font-size: 14px;
+}
+
+@media (max-width: 980px) {
+  .hero-grid,
+  .grid.three,
+  .grid.four,
+  .contact-box {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+  }
+
+  .nav-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 70px 0 50px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero-desc {
+    font-size: 17px;
+  }
+
+  .section-head h2,
+  .contact-box h2 {
+    font-size: 30px;
+  }
+
+  .card h3,
+  .product-card h3 {
+    font-size: 24px;
+  }
+
+.contact-section .contact-box {
+  background: #1f1f1f;
+  color: #fff;
+  border-radius: 28px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.contact-info {
+  flex: 1 1 420px;
+}
+
+.contact-split {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.contact-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.contact-card p {
+  margin: 6px 0;
+  color: #ddd;
+}
+
+.contact-form {
+  display: grid;
+  gap: 14px;
+  width: 100%;
+  max-width: 420px;
+  flex: 1 1 360px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+@media (max-width: 980px) {
+  .contact-section .contact-box {
+    padding: 28px;
+  }
+}
+.contact-section .contact-box {
+  background: #1f1f1f;
+  color: #fff;
+  border-radius: 28px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.contact-info {
+  flex: 1 1 420px;
+}
+
+.contact-split {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.contact-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.contact-card p {
+  margin: 6px 0 12px;
+  color: #ddd;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 14px;
+  width: 100%;
+  max-width: 420px;
+  flex: 1 1 360px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+@media (max-width: 980px) {
+  .contact-section .contact-box {
+    padding: 28px;
+  }
+}
+.thank-you-box {
+  max-width: 720px;
+  margin: 80px auto;
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.thank-you-box h1 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 42px;
+}
+
+.thank-you-box p {
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.thank-you-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
 }
