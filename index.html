@@ -1,222 +1,244 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JieYa Studio</title>
-  <meta
-    name="description"
-    content="JieYa Studio - 设计公司、LED广告买卖租赁、印刷服务，以及姐丫 IP、美容产品与文创商品品牌官网。"
-  />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <div class="logo">JieYa Studio</div>
-      <nav class="nav">
-        <a href="#services">商业服务</a>
-        <a href="#jieya">姐丫 IP</a>
-        <a href="#products">商品展示</a>
-        <a href="#contact">联络我们</a>
-      </nav>
-    </div>
-  </header>
+export default function JieyaSpaceHomepage() {
+  return (
+    <div className="min-h-screen bg-[#f7f3ee] text-[#4d433d] font-sans">
+      {/* HERO SECTION */}
+      <section className="grid lg:grid-cols-2 gap-10 items-center px-8 lg:px-24 py-24">
+        <div className="space-y-6">
+          <p className="uppercase tracking-[0.3em] text-sm text-[#9d8f84]">
+            Beauty · Journal · Self Growth
+          </p>
 
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-text">
-        <p class="eyebrow">JQR Design · LED · Printing · JieYa IP</p>
-        <h1>一个官网，整合商业服务与姐丫品牌</h1>
-        <p class="hero-desc">
-          我们提供设计服务、LED广告买卖与租赁、印刷整合，
-          同时发展 JieYa 姐丫 IP、美容产品与疗愈系文创商品。
-        </p>
-        <div class="hero-buttons">
-          <a href="#services" class="btn primary">查看商业服务</a>
-          <a href="#jieya" class="btn secondary">进入姐丫 IP</a>
-        </div>
-      </div>
+          <h1 className="text-5xl lg:text-7xl leading-tight font-serif">
+            姐丫 Jieya Space
+          </h1>
 
-      <div class="hero-card">
-        <div class="mini-card">
-          <p class="mini-label">Business</p>
-          <h3>设计 / LED / 印刷</h3>
-          <p>适合企业客户、门店品牌、活动推广与商业视觉整合。</p>
-        </div>
-        <div class="mini-card">
-          <p class="mini-label">Brand</p>
-          <h3>JieYa 姐丫 IP</h3>
-          <p>结合美容产品、文创商品、疗愈表达与品牌内容延伸。</p>
-        </div>
-      </div>
-    </div>
-  </section>
+          <p className="text-xl leading-relaxed text-[#6b5f58] max-w-xl">
+            在这里，你不用随时很厉害。
+          </p>
 
-  <section id="services" class="section">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-tag">Business Services</p>
-        <h2>商业服务</h2>
-        <p>为品牌、店面与活动提供一站式服务。</p>
-      </div>
+          <p className="leading-relaxed text-[#7a6d65] max-w-xl">
+            A gentle lifestyle space about skincare, journaling,
+            emotional growth, and slowly rebuilding life with softness,
+            awareness, and beauty.
+          </p>
 
-      <div class="grid three">
-        <div class="card">
-          <h3>设计服务</h3>
-          <p>品牌设计、平面排版、菜单、包装、名片、招牌视觉整理。</p>
-        </div>
-        <div class="card">
-          <h3>LED 广告</h3>
-          <p>LED 买卖、租赁、活动屏幕、广告投放与现场支援。</p>
-        </div>
-        <div class="card">
-          <h3>印刷服务</h3>
-          <p>名片、贴纸、传单、海报、横幅、包装物料印刷整合。</p>
-        </div>
-      </div>
-    </div>
-  </section>
+          <div className="flex flex-wrap gap-4 pt-4">
+            <button className="px-6 py-3 rounded-full bg-[#4d433d] text-white hover:opacity-90 transition">
+              Explore Journey
+            </button>
 
-  <section id="jieya" class="section alt">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-tag">JieYa Brand</p>
-        <h2>JieYa 姐丫 IP</h2>
-        <p>一个结合品牌故事、疗愈表达、美感生活与产品延伸的空间。</p>
-      </div>
-
-      <div class="grid three">
-        <div class="card">
-          <h3>美容产品</h3>
-          <p>Wangi / Wanyi 美容产品展示、礼盒包装与品牌故事。</p>
-        </div>
-        <div class="card">
-          <h3>文创商品</h3>
-          <p>姐丫疗愈系卡片、贴纸、小物与未来限定系列。</p>
-        </div>
-        <div class="card">
-          <h3>品牌内容</h3>
-          <p>结合自我探索、疗愈表达、美感生活与个人品牌记录。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="products" class="section">
-    <div class="container">
-      <div class="section-head">
-        <p class="section-tag">Store Preview</p>
-        <h2>商品展示</h2>
-        <p>未来可接 Supabase 做商品资料、订单与表单。</p>
-      </div>
-
-      <div class="grid four">
-        <div class="product-card">
-          <div class="product-image">商品图</div>
-          <h3>草本美容产品</h3>
-          <p>适合日常保养与品牌展示。</p>
-        </div>
-        <div class="product-card">
-          <div class="product-image">商品图</div>
-          <h3>礼盒包装服务</h3>
-          <p>可延伸毕业、节日、纪念礼物。</p>
-        </div>
-        <div class="product-card">
-          <div class="product-image">商品图</div>
-          <h3>姐丫心语卡</h3>
-          <p>适合疗愈系文创与情绪表达。</p>
-        </div>
-        <div class="product-card">
-          <div class="product-image">商品图</div>
-          <h3>贴纸 / 小物</h3>
-          <p>适合作为个人品牌延伸商品。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-<section id="contact" class="section contact-section">
-  <div class="container contact-box">
-    <div class="contact-info">
-      <p class="section-tag">Contact / Inquiry</p>
-      <h2>询问报价 / 合作 / 产品</h2>
-      <p>你可以直接 WhatsApp 我，或填写表单，我们会按业务线回复你。</p>
-
-      <div class="contact-split">
-        <div class="contact-card">
-          <h3>Wangi Beauty / 姐丫 IP</h3>
-          <p>美容产品、礼盒、文创、姐丫 IP 相关咨询</p>
-          <a
-            href="https://wa.me/60127895055?text=你好，我想询问 Wangi Beauty / 姐丫 IP"
-            target="_blank"
-            class="btn secondary"
-          >
-            立即 WhatsApp
-          </a>
-        </div>
-
-        <div class="contact-card">
-          <h3>Design / LED / 印刷</h3>
-          <p>设计、LED 广告、招牌、印刷与商业合作</p>
-
-          <div class="contact-actions">
-            <a
-              href="https://wa.me/60127781051?text=你好，我想询问 Design / LED / 印刷服务"
-              target="_blank"
-              class="btn secondary"
-            >
-              LED Advertising
-            </a>
-
-            <a
-              href="https://wa.me/60108211051?text=你好，我想询问 Design / LED / 印刷服务"
-              target="_blank"
-              class="btn secondary"
-            >
-              Design & Runner
-            </a>
+            <button className="px-6 py-3 rounded-full border border-[#4d433d] hover:bg-[#ebe4dd] transition">
+              Gentle Collection
+            </button>
           </div>
         </div>
-      </div>
+
+        <div>
+          <img
+            src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1200&auto=format&fit=crop"
+            alt="Jieya Lifestyle"
+            className="rounded-[2rem] shadow-xl object-cover h-[600px] w-full"
+          />
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section className="px-8 lg:px-24 py-20 bg-[#efe8df]">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <p className="uppercase tracking-[0.2em] text-sm text-[#9d8f84]">
+            About Jieya
+          </p>
+
+          <h2 className="text-4xl lg:text-5xl font-serif leading-tight">
+            I’m learning to build a life that is simple, stable, and meaningful.
+          </h2>
+
+          <p className="text-lg leading-relaxed text-[#6b5f58]">
+            I work in beauty and design while slowly building a personal brand
+            that combines skincare, journaling, emotional awareness, and gentle
+            living. This is not a place about perfection — it is a place about
+            rebuilding life slowly.
+          </p>
+        </div>
+      </section>
+
+      {/* SYSTEM SECTION */}
+      <section className="px-8 lg:px-24 py-24">
+        <div className="text-center mb-16 space-y-4">
+          <p className="uppercase tracking-[0.2em] text-sm text-[#9d8f84]">
+            Explore The System
+          </p>
+
+          <h2 className="text-4xl font-serif">
+            Gentle systems for daily living
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* CARD 1 */}
+          <div className="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
+            <img
+              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop"
+              alt="Skincare Journey"
+              className="h-72 w-full object-cover"
+            />
+
+            <div className="p-8 space-y-4">
+              <h3 className="text-2xl font-serif">Skincare Journey</h3>
+
+              <p className="text-[#6b5f58] leading-relaxed">
+                Maintenance day, skin observation, herbal skincare routines,
+                and slowly understanding your own skin.
+              </p>
+
+              <button className="text-sm uppercase tracking-[0.15em] border-b border-[#4d433d] pb-1">
+                View Journey
+              </button>
+            </div>
+          </div>
+
+          {/* CARD 2 */}
+          <div className="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
+            <img
+              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1200&auto=format&fit=crop"
+              alt="Index Tabs"
+              className="h-72 w-full object-cover"
+            />
+
+            <div className="p-8 space-y-4">
+              <h3 className="text-2xl font-serif">
+                Gentle Daily Index Tabs
+              </h3>
+
+              <p className="text-[#6b5f58] leading-relaxed">
+                A slow journaling system for emotional tracking, daily reset,
+                and self-awareness.
+              </p>
+
+              <button className="text-sm uppercase tracking-[0.15em] border-b border-[#4d433d] pb-1">
+                Explore Collection
+              </button>
+            </div>
+          </div>
+
+          {/* CARD 3 */}
+          <div className="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
+            <img
+              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop"
+              alt="The Practice"
+              className="h-72 w-full object-cover"
+            />
+
+            <div className="p-8 space-y-4">
+              <h3 className="text-2xl font-serif">The Practice</h3>
+
+              <p className="text-[#6b5f58] leading-relaxed">
+                For Me · For You · For Us — reflections, quotes, and emotional
+                practices for everyday life.
+              </p>
+
+              <button className="text-sm uppercase tracking-[0.15em] border-b border-[#4d433d] pb-1">
+                Start Practice
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* JOURNAL */}
+      <section className="bg-[#efe8df] px-8 lg:px-24 py-24">
+        <div className="flex justify-between items-end mb-12 flex-wrap gap-4">
+          <div>
+            <p className="uppercase tracking-[0.2em] text-sm text-[#9d8f84] mb-3">
+              Latest Journal
+            </p>
+
+            <h2 className="text-4xl font-serif">
+              Slowly rebuilding life
+            </h2>
+          </div>
+
+          <button className="border border-[#4d433d] px-5 py-2 rounded-full hover:bg-[#e6ddd5] transition">
+            View All
+          </button>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {[1, 2, 3].map((item) => (
+            <div
+              key={item}
+              className="bg-white rounded-[2rem] overflow-hidden shadow-sm"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?q=80&w=1200&auto=format&fit=crop"
+                alt="Journal"
+                className="h-56 w-full object-cover"
+              />
+
+              <div className="p-6 space-y-4">
+                <p className="text-sm uppercase tracking-[0.15em] text-[#9d8f84]">
+                  Maintenance Day
+                </p>
+
+                <h3 className="text-2xl font-serif leading-snug">
+                  Rebuilding my life slowly
+                </h3>
+
+                <p className="text-[#6b5f58] leading-relaxed text-sm">
+                  A gentle reflection about skincare, emotional recovery, and
+                  creating stable daily systems.
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="px-8 lg:px-24 py-16 bg-[#4d433d] text-[#f7f3ee]">
+        <div className="grid lg:grid-cols-2 gap-10">
+          <div className="space-y-4">
+            <h3 className="text-3xl font-serif">姐丫 Jieya Space</h3>
+
+            <p className="max-w-lg text-[#d9cec6] leading-relaxed">
+              A gentle lifestyle space for skincare, journaling, emotional
+              growth, and slowly becoming yourself.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-6 text-sm">
+            <div className="space-y-3">
+              <p className="uppercase tracking-[0.15em] text-[#d9cec6]">
+                Explore
+              </p>
+
+              <ul className="space-y-2">
+                <li>Home</li>
+                <li>Journal</li>
+                <li>Shop</li>
+                <li>Journey</li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <p className="uppercase tracking-[0.15em] text-[#d9cec6]">
+                Connect
+              </p>
+
+              <ul className="space-y-2">
+                <li>Instagram</li>
+                <li>Facebook</li>
+                <li>YouTube</li>
+                <li>WhatsApp</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-[#6b5f58] mt-12 pt-6 text-sm text-[#d9cec6]">
+          © 2026 Jieya Space. All rights reserved.
+        </div>
+      </footer>
     </div>
-
-  <form
-  name="contact"
-  method="POST"
-  data-netlify="true"
-  action="/thank-you.html"
-  class="contact-form"
->
-  <input type="hidden" name="form-name" value="contact" />
-  <input type="hidden" name="bot-field" />
-
-  <select name="inquiry_type" required>
-    <option value="">请选择询问类别</option>
-    <option value="beauty-ip">Wangi Beauty / 姐丫 IP</option>
-    <option value="design-led-print">Design / LED / 印刷</option>
-  </select>
-
-  <input type="text" name="name" placeholder="你的名字" required />
-  <input type="email" name="email" placeholder="你的 Email" required />
-  <input type="text" name="phone" placeholder="WhatsApp 电话" />
-
-  <textarea
-    name="message"
-    placeholder="你想询问什么？"
-    required
-    rows="5"
-  ></textarea>
-      <button type="submit" class="btn primary">提交询问</button>
-    </form>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="container footer-wrap">
-    <p>© 2026 JieYa Studio. All rights reserved.</p>
-    <p>Design · LED · Printing · JieYa IP</p>
-  </div>
-</footer>
-</body>
-</html>
+  );
+}
